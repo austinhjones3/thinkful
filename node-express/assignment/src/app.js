@@ -31,10 +31,10 @@ app.get("/check/:zip", validateZip, (req, res) => {
 
 app.get("/zoos/:zip", validateZip, (req, res) => {
   const zip = req.params.zip;
-  const response = getZoos(zip);
+  const zoos = getZoos(zip);
 
-  if (response) {
-    res.send(`${zip} zoos: ${response.join("; ")}`);
+  if (zoos) {
+    res.send(`${zip} zoos: ${zoos.join("; ")}`);
   } else {
     res.send(`${zip} has no zoos.`);
   }
