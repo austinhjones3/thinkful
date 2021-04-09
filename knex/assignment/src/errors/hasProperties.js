@@ -5,7 +5,7 @@
  * @returns {function(*, *, *): void}
  *    a middleware function that validates that req.body.data has the specified non-falsey properties.
  */
-function hasProperties(...properties) {
+module.exports = function (...properties) {
   return function (req, res, next) {
     const { data = {} } = req.body;
 
@@ -23,6 +23,6 @@ function hasProperties(...properties) {
       next(error);
     }
   };
-}
+};
 
-module.exports = hasProperties;
+// module.exports = hasProperties;
