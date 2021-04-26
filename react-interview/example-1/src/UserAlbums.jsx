@@ -6,6 +6,8 @@ export default function UserAlbums() {
   const {
     params: { userId },
   } = useRouteMatch();
+  const route = useRouteMatch();
+  console.log(route);
 
   useEffect(() => {
     fetch(`https://jsonplaceholder.typicode.com/albums?userId=${userId}`)
