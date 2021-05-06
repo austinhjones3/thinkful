@@ -32,8 +32,8 @@ function splitSum2(tours) {
       preSum += tours[j];
     }
 
-    for (let k = i + 1; k < tours.length; k++) {
-      postSum += tours[k];
+    for (let j = i + 1; j < tours.length; j++) {
+      postSum += tours[j];
     }
 
     const diff = Math.abs(preSum - postSum);
