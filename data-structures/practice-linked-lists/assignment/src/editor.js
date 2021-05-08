@@ -19,20 +19,11 @@ class Editor {
    */
   insert(char) {
     if (this.cursor) {
-      // console.log("char", char);
-      // console.log(JSON.stringify(this, null, 2));
       this.text.insert(char, (node) => node.value === this.cursor.value);
-      // console.log(JSON.stringify(this, null, 2));
     } else {
       this.text.insertAtHead(char);
     }
-
-    // if (!this.cursor) {
-    //   console.log(this);
-    //   this.text.insertAtHead(char);
-    // }
     this.arrowRight();
-
     return this;
   }
 
@@ -44,15 +35,9 @@ class Editor {
    */
   delete() {
     if (this.cursor && this.text.head) {
-      /**
-       * not completely understanding why arrowLeft() wasn't good enough
-       * for this but I do understand why this current solution is working
-       */
-      const previous = this.text.findWithPrevious(
-        (node) => this.cursor.value === node.value
-      )[1];
-      this.text.remove((node) => node.value === this.cursor.value);
-      this.cursor = previous;
+      const current = this.cursor;
+      this.arrowLeft();
+      this.text.remove((node) => node === current);
     }
     return this;
   }
@@ -64,11 +49,9 @@ class Editor {
    */
   arrowLeft() {
     if (this.text.head && this.cursor) {
-      const previous = this.text.findWithPrevious((node) => {
+      this.cursor = this.text.findWithPrevious((node) => {
         return this.cursor.value === node.value;
       })[1];
-      console.log(previous);
-      this.cursor = previous;
     }
     return this;
   }

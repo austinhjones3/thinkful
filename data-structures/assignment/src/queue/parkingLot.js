@@ -49,7 +49,6 @@ class ParkingLot {
     const indexOfParkingLot = this.spaces.findIndex(
       (ele) => ele === licensePlateNumber
     );
-
     if (indexOfParkingLot !== -1) {
       this.spaces[indexOfParkingLot] = "vacant";
       this.revenue += this.rate;

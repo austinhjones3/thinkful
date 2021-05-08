@@ -1,40 +1,42 @@
 const Stack = require("./lib/stack");
 
 function match(expression) {
-  const matching = {
+  let leftStack = new Stack();
+  let rightStack = new Stack();
+  let leftPop = "";
+  let rightPop = "";
+  const brackets = {
+    "(": ")",
     "{": "}",
     "[": "]",
-    "(": ")",
   };
-
-  const isBracket = (x) => ["{", "}", "[", "]", "(", ")"].includes(x);
-  const isOpeningBracket = (x) => ["{", "[", "("].includes(x);
-
-  let isBalanced = function (expr) {
-    let stack = [];
-
-    for (let i = 0; i < expr.length; i++) {
-      if (isOpeningBracket(expr[i])) {
-        stack.push(expr[i]);
-      } else {
-        let last = stack.pop();
-        if (expr[i] !== matching[last]) {
+  // start a loop to iterate through each character in the expression
+  for (let i = 0; i < expression.length; i++) {
+    if (expression[i] === "(" || expression[i] === "[" || expression[i] === "{") {
+      leftStack.push(expression[i]);
+    } else if (
+      expression[i] === ")" ||
+      expression[i] === "]" ||
+      expression[i] === "}"
+    ) {
+      rightStack.push(expression[i]);
+      if (leftStack.top !== null && rightStack.top !== null) {
+        leftPop = leftStack.pop();
+        rightPop = rightStack.pop();
+        console.log("leftpop", leftPop, "rightpop", brackets[leftPop]);
+        if (rightPop !== brackets[leftPop]) {
           return false;
         }
+      } else {
+        return false;
       }
     }
-    if (stack.length !== 0) {
-      return false;
-    }
-
+  }
+  if (leftStack.top === null) {
     return true;
-  };
-
-  export const matchingBrackets = (str) => {
-    const expr = [...str].filter(isBracket).join("");
-
-    return isBalanced(expr);
-  };
+  } else {
+    return false;
+  }
 }
 
 module.exports = match;

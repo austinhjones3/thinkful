@@ -30,21 +30,6 @@ function removeDuplicates(list) {
     }
     node = node.next;
   }
-  // const existingNodes = {};
-  // let node = null;
-
-  // if (list.head) {
-  //   node = list.head;
-  // }
-
-  // while (node) {
-  //   if (existingNodes[node.value]) {
-  //     list.remove((ele) => ele.value === node.value);
-  //   } else {
-  //     existingNodes[node.value] = 1;
-  //   }
-  //   node = node.next;
-  // }
 
   return list;
 }

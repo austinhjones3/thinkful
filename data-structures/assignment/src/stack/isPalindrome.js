@@ -15,10 +15,15 @@ const Stack = require("../linked-list/stack");
 
 function isPalindrome(text) {
   const cleanText = text.toLowerCase().replace(/[^a-zA-Z0-9]/g, "");
+  if (!cleanText) {
+    return false;
+  }
+  let reverse = "";
+  for (let i = cleanText.length - 1; i > -1; i--) {
+    reverse += cleanText.charAt(i);
+  }
 
-  // TODO: Write an O(n) algorithm that uses a stack to determine whether the given input text is palindrome or not.
-
-  return false;
+  return reverse === cleanText;
 }
 
 module.exports = isPalindrome;

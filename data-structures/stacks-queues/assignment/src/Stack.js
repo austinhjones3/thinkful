@@ -19,12 +19,10 @@ class Stack {
   }
 
   pop() {
-    // check this.top
     if (this.top) {
-      // point to popped node
-      const popped = this.top; // object1
-      this.top = this.top.next; //object2
-      return popped.value; //> object1.value
+      const popped = this.top;
+      this.top = this.top.next;
+      return popped.value;
     } else {
       console.log("There is nothing in the stack");
     }
