@@ -65,3 +65,12 @@
 - used knex to bring data from the database to Node + Express, perform requested operations with the data, and send responses (or errors).
 
 22. knex
+
+#### Data Structures and Algorithms
+
+- covered topics such as algorithms, asymptotic analysis, time and space complexity, big O notation, searching and sorting algorithms, recursion, arrays, sets, maps, objects, queues, stacks, classes, linked lists, and binary search trees.
+
+23. dsa-intro
+24. search-sort
+25. data-structures
+26. trees
